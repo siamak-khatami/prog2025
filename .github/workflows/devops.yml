@@ -34,3 +34,8 @@ jobs:
               run: go build -o Prog2025 .
             - name: repo
               run: ls
+            - name: Making artifact to export the app
+              uses: action/artifact-upload@v4
+              with:
+                name: Prog2025Artifact
+                path: Prog2025
