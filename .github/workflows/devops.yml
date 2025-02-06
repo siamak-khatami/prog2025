@@ -24,3 +24,13 @@ jobs:
                 echo "Testing started!"
                 echo "Testing ..."
                 echo "Testing finished!"
+    Build: 
+        runs-on: ubuntu-latest
+        needs: Testing
+        steps:
+            - name: Getting the code to the runner
+              uses: actions/checkout@v3
+            - name: Bulding the app
+              run: go build -o Prog2025 .
+            - name: repo
+              run: ls
