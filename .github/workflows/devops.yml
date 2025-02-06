@@ -10,3 +10,12 @@ jobs:
         steps:
             - name: Hello World
               run: echo "Hello World!"
+    Testing: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: show the repo
+              run: ls
+            - name: Getting the code to the runner
+              uses: actions/checkout@v3
+            - name: show the repo
+              run: ls
