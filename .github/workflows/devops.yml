@@ -19,3 +19,8 @@ jobs:
               uses: actions/checkout@v3
             - name: show the repo
               run: ls
+            - name: Testing
+              run: |
+                echo "Testing started!"
+                echo "Testing ..."
+                echo "Testing finished!"
