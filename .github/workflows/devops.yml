@@ -122,9 +122,9 @@ jobs:
                 git config --local user.name "siamak"
                 git config --local user.email "siamak.khatami@ntnu.no"
                 
-                git remote add productioncode https://oauth2:${{secrets.GITLAB_PRODCODE_TOKEN}}@git.gvk.idi.ntnu.no/course/prog2005/prog2005-2025-workspace/khatami/productioncode.git
-                git pull productioncode
-                
+                # git remote add productioncode https://oauth2:${{secrets.GITLAB_PRODCODE_TOKEN}}@git.gvk.idi.ntnu.no/course/prog2005/prog2005-2025-workspace/khatami/productioncode.git
+                # git pull productioncode master
+
                 git add .
                 git commit -m "Production code updated!"
                 git push productioncode master
