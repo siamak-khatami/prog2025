@@ -51,13 +51,15 @@ jobs:
                 name: Prog2025Artifact
                 path: Prog2025
             - name: Set Git config
+            ##### You need to give permission to the Actions Bot from settings.
+            ##### Or you need to have a PAT token to upload.
               run: |
                   git config --local user.email "khatami.sia@gmail.com"
-                  git config --local user.name "Github Actions"
+                  git config --local user.name "Siamak Khatami"
             - name: Merge dev back to master
               run: |
                 git fetch --unshallow
-                git checkout master
-                git pull origin master
+                git checkout master 
+                git pull origin master 
                 git merge --no-ff devops -m "Auto-merge devops back to master"
-                git push origin master
+                git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/siamak-khatami/prog2025.git master
