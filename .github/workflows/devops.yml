@@ -50,6 +50,10 @@ jobs:
               with:
                 name: Prog2025Artifact
                 path: Prog2025
+            - name: Set Git config
+              run: |
+                  git config --local user.email "actions@github.com"
+                  git config --local user.name "Github Actions"
             - name: Merge dev back to master
               run: |
                 git fetch --unshallow
