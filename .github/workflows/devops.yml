@@ -73,6 +73,7 @@ jobs:
                   git remote add production https://oauth2:${{secrets.GITLAB_TOKEN2}}@git.gvk.idi.ntnu.no/course/prog2005/prog2005-2025-workspace/khatami/production.git
                   git config --local user.name "siamak"
                   git config --local user.email "siamak.khatami@ntnu.no"
+                  git checkout -b master
             - name: Get the built Artifact
               uses: actions/download-artifact@v4
               with:
