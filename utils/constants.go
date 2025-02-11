@@ -4,7 +4,6 @@ package utils
 
 const HomeEndPoint = "/"
 const ArticleEndPoint = "/article"
-const NEWVAR = "VAR"
 
 //////// Ports //////////////////
 
