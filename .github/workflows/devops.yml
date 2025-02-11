@@ -110,10 +110,6 @@ jobs:
             ## if you do not clone the repo, it will have history problems.
             - name: Getting the code to the runner
               uses: actions/checkout@v3 
-            - name: Get the built Artifact
-              uses: actions/download-artifact@v4
-              with:
-                name: Prog2025Artifact
             - name: Commit changes
               run: |
                 ls
@@ -121,7 +117,14 @@ jobs:
                 git fetch --unshallow old
                 git config --local user.name "siamak"
                 git config --local user.email "siamak.khatami@ntnu.no"
-                
+                git checkout master
+
+            - name: Get the built Artifact
+              uses: actions/download-artifact@v4
+              with:
+                name: Prog2025Artifact
+            - name: Commit changes
+              run: | 
                 # git remote add productioncode https://oauth2:${{secrets.GITLAB_PRODCODE_TOKEN}}@git.gvk.idi.ntnu.no/course/prog2005/prog2005-2025-workspace/khatami/productioncode.git
                 # git pull productioncode master
 
