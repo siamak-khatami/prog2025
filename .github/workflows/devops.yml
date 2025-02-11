@@ -41,7 +41,7 @@ jobs:
         steps:
             - name: Getting the code to the runner
               uses: actions/checkout@v3
-            - name: Bulding the app
+            - name: Building the app
               run: go build -o Prog2025 .
             - name: repo
               run: ls
@@ -50,3 +50,10 @@ jobs:
               with:
                 name: Prog2025Artifact
                 path: Prog2025
+            - name: Merge dev back to master
+              run: |
+                git fetch --unshallow
+                git checkout master
+                git pull origin master
+                git merge --no-ff devops -m "Auto-merge devops back to master"
+                git push origin master 
