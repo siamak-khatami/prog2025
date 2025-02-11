@@ -88,7 +88,11 @@ jobs:
             ##### We didn't checkout the code, so there is no git config. 
             ##### git remote add old "https://github.com/siamak-khatami/prog2025.git"
             ##### git fetch --unshallow old
+            ##### Run git clone ***git.gvk.idi.ntnu.no/course/prog2005/prog2005-2025-workspace/khatami/production.git
+Cloning into 'production'...
+warning: You appear to have cloned an empty repository.
+fatal: not a git repository (or any of the parent directories): .git
+Error: Process completed with exit code 128.
 
-              run: |  
-                  git fetch --unshallow production
+              run: |   
                   git push production master
