@@ -135,7 +135,7 @@ jobs:
               git config --local user.name "siamak"
               git config --local user.email "siamak.khatami@ntnu.no"
               git checkout master
-              git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/siamak-khatami/prog2025ActionsProd.git
+              git remote set-url origin https://oauth2:${{ secrets.GH_TOKEN }}@github.com/siamak-khatami/prog2025ActionsProd.git
               git push origin master
                 
             
