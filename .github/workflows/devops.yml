@@ -82,17 +82,12 @@ jobs:
                   ls
                   git add .
                   git commit -m "Production file updated!"
+                  git push production master
             - name: Pushing to Gitlab
             ##### You need to give permission to the Actions Bot from settings.
             ##### Or you need to have a PAT token to upload.
             ##### We didn't checkout the code, so there is no git config. 
             ##### git remote add old "https://github.com/siamak-khatami/prog2025.git"
             ##### git fetch --unshallow old
-            ##### Run git clone ***git.gvk.idi.ntnu.no/course/prog2005/prog2005-2025-workspace/khatami/production.git
-Cloning into 'production'...
-warning: You appear to have cloned an empty repository.
-fatal: not a git repository (or any of the parent directories): .git
-Error: Process completed with exit code 128.
-
-              run: |   
-                  git push production master
+            ##### 
+              run: echo "Done!"
