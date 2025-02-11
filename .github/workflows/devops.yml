@@ -60,4 +60,4 @@ jobs:
                 git checkout master
                 git pull origin master
                 git merge --no-ff devops -m "Auto-merge devops back to master"
-                git push origin master  
+                git push origin master
