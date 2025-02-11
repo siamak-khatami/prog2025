@@ -67,20 +67,27 @@ jobs:
         runs-on: ubuntu-latest
         needs: Build
         steps: 
+            - name: Init git
+              run: |
+                  git init
+                  git branch -m master
+                  git config --local user.name "siamak"
+                  git config --local user.email "siamak.khatami@ntnu.no"
             - name: Get the built Artifact
               uses: actions/download-artifact@v4
               with:
                 name: Prog2025Artifact
-            - name: List the repo
-              run: ls
+            - name: Commit changes
+              run: |
+                  git add .
+                  git commit -m "Production file updated!"
             - name: Pushing to Gitlab
             ##### You need to give permission to the Actions Bot from settings.
             ##### Or you need to have a PAT token to upload.
-              run: | 
-                  git init
-                  git config --local user.name "siamak"
-                  git config --local user.email "siamak.khatami@ntnu.no"
-                  git remote add old "https://github.com/siamak-khatami/prog2025.git"
-                  git fetch --unshallow old
+            ##### We didn't checkout the code, so there is no git config. 
+            ##### git remote add old "https://github.com/siamak-khatami/prog2025.git"
+            ##### git fetch --unshallow old
+
+              run: |  
                   git remote add production "https:oauth2:${{secrets.GITLAB_TOKEN}}@git.gvk.idi.ntnu.no/course/prog2005/prog2005-2025-workspace/khatami/mirrorproduction.git"
                   git push production master
