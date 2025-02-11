@@ -116,6 +116,7 @@ jobs:
                 git fetch --unshallow old
                 git config --local user.name "siamak"
                 git config --local user.email "siamak.khatami@ntnu.no"
+                git checkout master
                 git remote set-url origin https://oauth2:${{secrets.GITLAB_PRODCODE_TOKEN}}@git.gvk.idi.ntnu.no/course/prog2005/prog2005-2025-workspace/khatami/progcode.git
                 git push origin master
                 
