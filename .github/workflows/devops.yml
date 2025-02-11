@@ -109,26 +109,14 @@ jobs:
             ## We need to clone the repo (which can be empty at start), and checkout to the desired branch (here the master) and then push to that branch.cancel-timeout-minutes: 
             ## if you do not clone the repo, it will have history problems.
             - name: Getting the code to the runner
-              uses: actions/checkout@v3 
+              uses: actions/checkout@v3  
             - name: Commit changes
-              run: |
-                ls
+              run: | 
                 git remote add old "https://github.com/siamak-khatami/prog2025.git"
                 git fetch --unshallow old
                 git config --local user.name "siamak"
                 git config --local user.email "siamak.khatami@ntnu.no"
-                git checkout master
-
-            - name: Get the built Artifact
-              uses: actions/download-artifact@v4
-              with:
-                name: Prog2025Artifact
-            - name: Commit changes
-              run: | 
-                git remote add productioncode https://oauth2:${{secrets.GITLAB_PRODCODE_TOKEN}}@git.gvk.idi.ntnu.no/course/prog2005/prog2005-2025-workspace/khatami/productioncode.git
-                git pull productioncode master
-                git add .
-                git commit -m "Production code updated!"
+                git remote add productioncode https://oauth2:${{secrets.GITLAB_PRODCODE_TOKEN}}@git.gvk.idi.ntnu.no/course/prog2005/prog2005-2025-workspace/khatami/progcode.git
                 git push productioncode master
                 
             
