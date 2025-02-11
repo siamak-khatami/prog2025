@@ -119,5 +119,23 @@ jobs:
                 git checkout master
                 git remote set-url origin https://oauth2:${{secrets.GITLAB_PRODCODE_TOKEN}}@git.gvk.idi.ntnu.no/course/prog2005/prog2005-2025-workspace/khatami/progcode.git
                 git push origin master
+    CodeToBackUP:
+      runs-on: ubuntu-latest
+      needs: DeployApp
+      steps: 
+          ## Your prod does not checkout the code, it downloads the artifact. So, there is no git config.cancel-timeout-minutes: 
+          ## We need to clone the repo (which can be empty at start), and checkout to the desired branch (here the master) and then push to that branch.cancel-timeout-minutes: 
+          ## if you do not clone the repo, it will have history problems.
+          - name: Getting the code to the runner
+            uses: actions/checkout@v3  
+          - name: Commit changes
+            run: | 
+              git remote add old "https://github.com/siamak-khatami/prog2025.git"
+              git fetch --unshallow old
+              git config --local user.name "siamak"
+              git config --local user.email "siamak.khatami@ntnu.no"
+              git checkout master
+              git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/siamak-khatami/prog2025ActionsProd.git
+              git push origin master
                 
             
