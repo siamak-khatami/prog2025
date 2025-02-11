@@ -59,7 +59,7 @@ jobs:
             - name: Merge dev back to master
               run: |
                 git fetch --unshallow
-                git checkout master
-                git pull origin master
+                git checkout master 
+                git pull origin master 
                 git merge --no-ff devops -m "Auto-merge devops back to master"
                 git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/siamak-khatami/prog2025.git master
