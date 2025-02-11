@@ -1,0 +1,63 @@
+name: DevopsWF
+
+on: 
+    push:
+        branches: [main, devops]
+
+jobs:
+    Job1: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: Hello World
+              run: echo "Hello World!"
+    Job2: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: Hello World
+              run: echo "Hello World!"
+    Testing: 
+        runs-on: ubuntu-latest
+        needs: [Job1, Job2]
+        steps:
+            - name: show the repo
+              run: ls
+            - name: Getting the code to the runner
+              uses: actions/checkout@v3
+            - name: show the repo
+              run: ls
+            - name: Testing
+              run: |
+                echo "Testing started!"
+                echo "Testing ..."
+                echo "Testing finished!"
+    Job3: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: Hello World
+              run: echo "Hello World!"
+    Build: 
+        runs-on: ubuntu-latest
+        needs: [Testing, Job3]
+        steps:
+            - name: Getting the code to the runner
+              uses: actions/checkout@v3
+            - name: Building the app
+              run: go build -o Prog2025 .
+            - name: repo
+              run: ls
+            - name: Making artifact to export the app
+              uses: actions/upload-artifact@v4
+              with:
+                name: Prog2025Artifact
+                path: Prog2025
+            - name: Set Git config
+              run: |
+                  git config --local user.email "khatami.sia@gmail.com"
+                  git config --local user.name "Github Actions"
+            - name: Merge dev back to master
+              run: |
+                git fetch --unshallow
+                git checkout master
+                git pull origin master
+                git merge --no-ff devops -m "Auto-merge devops back to master"
+                git push origin master
