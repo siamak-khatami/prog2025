@@ -73,10 +73,11 @@ jobs:
                 name: Prog2025Artifact
             - name: List the repo
               run: ls
-            - name: Pushing to 
+            - name: Pushing to Gitlab
             ##### You need to give permission to the Actions Bot from settings.
             ##### Or you need to have a PAT token to upload.
               run: | 
+                  git init
                   git config --local user.name "siamak"
                   git config --local user.email "siamak.khatami@ntnu.no"
                   git remote add old "https://github.com/siamak-khatami/prog2025.git"
