@@ -86,5 +86,5 @@ jobs:
                   else
                     git checkout master
                   fi
-                git remote set-url origin https://oauth2:${{secrets.GITLAB_PRODCODE_TOKEN}}@git.gvk.idi.ntnu.no/course/prog2005/prog2005-2025-workspace/khatami/progcode.git
+                git remote set-url origin https://oauth2:${{secrets.GITLAB_PRODCODE_TOKEN}}@git.gvk.idi.ntnu.no/course/prog2005/prog2005-2025-workspace/khatami/progcode2005.git
                 git push origin master
